@@ -97,7 +97,7 @@ Devices and relays can be provisioned and operated using a lightweight protocol 
         - Receive polling period
 
 
-**Message transfer **
+**Message transfer**
 
 - SEND [+ WAIT]
     - Sends a message and optionally waits to receive for a device or application defined period.
