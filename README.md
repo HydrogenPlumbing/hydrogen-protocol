@@ -1,28 +1,32 @@
 # Hydrogen Protocol
 
-
-
-The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and interoperability framework for IoT networks that can be layered on top of existing IoT physical layers (PHY) protocols. The purpose HP is to enable development of unified IoT applications that can operate across a range of IoT  technologies, network operators, and regulatory environments.  HP builds on existing Internet standards including IPv6 and the Border Gateway Protocol (BGP). 
-
-
+The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and interoperability framework for IoT networks that can be layered on top of existing IoT physical layers (PHY) protocols. The purpose of HP is to enable development of unified IoT applications that can operate across a range of IoT technologies, network operators, and regulatory environments. HP builds on existing Internet standards including IPv6 and the Border Gateway Protocol (BGP).
 
 **HP goals include:**
+Protocol- and provider-independent deployment of a unified IPv6 IoT network with inter-network roaming, adapting existing internet standards to IoT environments.
+Provide a framework for allowing traffic peering between network operators using a common PHY layer.
+Providing IPv6 compatibility, while minimizing data overhead for power and bandwidth constrained devices (33-45 byte overhead per message frame).
+Providing device authentication and end to end encryption using best-available methods, with ability to support new encryption methods.
+Provide secure, lightweight over-the-air (OTA) device provisioning wherever supported by the PHY layer.
+Layered implementation allowing deployment alongside existing LPWAN protocols at the application-level, or as a replacement for Layer 2-3 data link and network implementations.
+Provide a transitional implementation for network operators and protocols that do not yet support standards-based Layer 2-3
+Allow for federated implementation via standard protocols. Anyone can deploy an HP network and devices by provisioning an IPv6 /48 address block and an ASN from their regional internet registry. By relying on existing internet routing infrastructure to identify networks there's no need for a central network registry or peering infrastructure as has been ﻿developed proposed for existing LPWAN protocols.
 
 - Protocol- and provider-independent deployment of a unified IPv6 IoT network with inter-network roaming, adapting existing internet standards to IoT environments.
 - Provide a framework for allowing traffic peering between network operators using a common PHY layer.
 - Providing IPv6 compatibility, while minimizing data overhead for power and bandwidth constrained devices (33-45 byte overhead per message frame).
 - Providing device authentication and end to end encryption using best-available methods, with ability to support new  encryption methods.  
 - Provide secure, lightweight over-the-air (OTA) device provisioning wherever  supported by the PHY layer.
-- Layered implementation allowing deployment along side existing LPWAN protocols at the application-level, or as a replacement for Layer 2-3 data link and network implementations.
+- Layered implementation allowing deployment alongside existing LPWAN protocols at the application-level, or as a replacement for Layer 2-3 data link and network implementations.
 - Provide a transitional implementation for network operators and protocols that do not yet support standards-based Layer 2-3 
-- Allow for federated implementation via standard protocols. Anyone can deploy an HP network and devices by provisioning an IPv6 /48 address block and and an ASN from their regional internet registry. By relying on existing internet routing infrastructure to identify networks there's no need for a central network registry or peering infrastructure as has been [﻿developed proposed for existing LPWAN protocols](https://www.thethingsindustries.com/peering/).
+- Allow for federated implementation via standard protocols. Anyone can deploy an HP network and devices by provisioning an IPv6 /48 address block and an ASN from their regional internet registry. By relying on existing internet routing infrastructure to identify networks there's no need for a central network registry or peering infrastructure as has been [﻿developed proposed for existing LPWAN protocols](https://www.thethingsindustries.com/peering/).
 
 
 **HP non-goals include:**
 
 - Providing or specifying LPWAN a complete protocol. HP is designed to work across a range of existing LPWAN PHY implementations, including open spectrum and carrier-based services. HP can augment LPWAN technologies with existing Layer 2-3 services, providing application-level interoperability on device or at a network gateway.
 - Provide a facility for paid or conditional traffic peering. Traffic peering rules and billing could be implemented on top of HP networks, however, the HP protocol recommends free/open peering where upstream network costs allow, and transparent bilateral and multilateral agreements only where required to ensure financial sustainability of peering relationships.
-- Provide OTA device for all PHY layers. We are working with hardware vendors and network operators that are building OTA provision for IoT devices via carrier-based protocols (e.g. iSIM/SoftSIM), however, HP providing works alongside existing carrier provisioning requirements.  
+- Provide an OTA provisioning method for all PHY layers. We are working with hardware vendors and network operators that are building OTA provision for IoT devices via carrier-based protocols (e.g. iSIM/SoftSIM), however, HP works alongside existing carrier provisioning requirements.  
 - Force network operators to alter existing deployments to support IPv6-based IoT. However, we hope the project will facilitate on-going transition efforts.
 
 
@@ -34,7 +38,7 @@ By combining  IPv6 and IPsec implementations augmented for IoT with BGP provide 
 
 HP is design to complement existing LPWAN technologies, providing a set of services that can be layered on top of existing protocols already provide device-level authentication (e.g. LTE/NB-IoT), and can be implemented on-device or at a gateway for existing networks.
 
-Messages sent to or from devices use a network gateway for device authentication and as a data relay for subscribing applications. This combines aspects of common IoT messaging protocols like LoRaWAN and MQTT with global, internet routable addresses, device authentication, and message security and integrity. By using a single 128bit IPv6 address to define the device, and a BGP hosted network as the gateway, HP provides a compact, self-describing IoT network that leverages existing internet address space and protocols.
+Messages sent to or from devices use a network gateway for device authentication and as a data relay for subscribing applications. This combines aspects of common IoT messaging protocols like LoRaWAN and MQTT with global, internet routable addresses, device authentication, and message security and integrity. By using a single 128 bit IPv6 address to define the device, and a BGP hosted network as the gateway, HP provides a compact, self-describing IoT network that leverages existing internet address space and protocols.
 
 
 
@@ -56,7 +60,7 @@ Figure 2: HP message frame
 
 HP uses local relays, with IoT PHY-specific radios (e.g. LoRa, MIOTY, NB-IoT) to relay messages to and from IoT devices and transfer them to the HP network gateway. 
 
-The relay runs a minimal HP protocol implementation that can parse the HP message headers, and (optionally) verify the message was sent from a valid, authenticated device using PKI. If the local relay supports IPv6 then it transfers the complete HP message directly to the network gateway defined by the first 48 bis of the device's address. In the case of relays with upstream networks (either wired or wireless) that don't offer native IPv6 support, the relay can forward the message (e.g. via IPv4 tunneling) to an upstream relay that can reach the gateway via IPv6.
+The relay runs a minimal HP protocol implementation that can parse the HP message headers, and (optionally) verify the message was sent from a valid, authenticated device using PKI. If the local relay supports IPv6 then it transfers the complete HP message directly to the network gateway defined by the first 48 bits of the device's address. In the case of relays with upstream networks (either wired or wireless) that don't offer native IPv6 support, the relay can forward the message (e.g. via IPv4 tunneling) to an upstream relay that can reach the gateway via IPv6.
 
 This approach allows any local relay that supports the IoT PHY layer (e.g. LoRa, NB-IoT) to forward messages to the correct network gateway without any additional knowledge about the device or its network beyond the IPv6 address. This is different from existing IoT networks which require PHY and protocol specific look-ups to resolve devices and network gateways. A key tenant of this approach is open and transparent traffic peering between networks wherever upstream bandwidth costs allow. 
 
@@ -64,7 +68,7 @@ This approach allows any local relay that supports the IoT PHY layer (e.g. LoRa,
 
 Figure 3: simplified HP network architecture with direct relay-gateway connection
 
-HP devices are provisioned using device- and network-specific key pairs configured via Elliptic Curve Diffie Hellman (ECDH) key exchange. Once provisioned messages are signed using the device's key, and message-level encryption can be performed using device, network, or application-specific keys using best-available methods (e.g. AES-GCM or ChaCha20).
+HP devices are provisioned using device- and network-specific key pairs configured via Elliptic Curve Diffie Hellman (ECDH) key exchange. Once provisioned messages are signed using the device's key,  message-level encryption can be performed using device, network, or application-specific keys using best-available methods (e.g. AES-GCM or ChaCha20).
 
 Messages received by the gateway are placed in queues and can be subscribed to via the corresponding gateway, application,or device ID. This pub/sub style message broker builds in existing IoT best practices (e.g. MQTT), adding a unified device/queue address space and message source authentication. The gateway message queues operate bidirectionally and can stage data for transfer to intermittently connected IoT devices.
 
@@ -76,7 +80,7 @@ Messages received by the gateway are placed in queues and can be subscribed to v
 
 **Hydrogen Protocol Device Provisioning  and Network Management**
 
-Devices and relays can be provisioned and operated using a lightweight protocol that enables control plane communication between IoT devices, relays and network gateways. These messages are defined  configured in the 8 bit HP message header (header format TK). 
+Devices and relays can be provisioned and operated using a lightweight protocol that enables control plane communication between IoT devices, relays and network gateways. These messages are configured in the 8 bit HP message header (header format TK). 
 
 
 
