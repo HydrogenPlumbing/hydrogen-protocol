@@ -27,19 +27,18 @@ HP provides a lightweight IPv6 implementation geared towards power and bandwidth
 
 By combining  IPv6 and IPsec implementations augmented for IoT with BGP, HP provides a standards-aligned framework for device authentication that spans network and protocol boundaries, and reduces per-message overhead. 
 
-HP is design to complement existing LPWAN technologies, providing a set of services that can be layered on top of existing protocols already provide device-level authentication (e.g. LTE/NB-IoT), and can be implemented on-device or at a gateway for existing networks.
+HP is design to complement existing LPWAN technologies, providing a set of services that can be layered on top of existing protocols that already provide device-level authentication (e.g. LTE/NB-IoT), and can be implemented on-device for end-to-end deployment, or as a proxy/gateway into existing networks.
 
-Messages sent to or from devices use a network gateway for device authentication and as a data relay for subscribing applications. This combines aspects of common IoT messaging protocols like LoRaWAN and MQTT with global, internet routable addresses, device authentication, and message security and integrity. By using a single 128 bit IPv6 address to define the device, and a BGP hosted network as the gateway, HP provides a compact, self-describing IoT network that leverages existing internet address space and protocols.
-
+Messages sent to or from devices use a HP network gateway for device authentication and as a data relay for subscribing applications. HP combines global, internet routable addresses, PKI-based device authentication, and message security and integrity. By using a single 128 bit IPv6 address to define the device, and a BGP hosted subnet as the gateway, HP provides a compact, self-describing IoT network that leverages existing internet address space and protocols.
 
 
  **How does it work?**
 
 HP uses 128 bit IPv6 address for device identification and network roaming (see figure 1).  The first 48 bits the routing prefix for a BGP-provisioned publicly routed IPv6 network, followed by a 16 bit application ID, and a 64 bit device identifier. The initial 48 bit network ID serves as the gateway address for all devices on this network. 
 
-![diagram-export-9_26_2023, 11 27 44 AM.png](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/r4BdPlGleNLWfw0kG-Ewz.png?ixlib=js-3.7.0 "diagram-export-9_26_2023, 11 27 44 AM.png")
+![diagram-export-9_26_2023, 11 27 44 AM.png]()
 
-Figure 1: HP IPv6 Addressing   [﻿View on canvas](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy?elements=2MqCHPrzuoMPHgtcWten4w) 
+Figure 1: HP IPv6 Addressing   [﻿View on canvas](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/Yw00d92-Bzcxjyi4a6gXG.png?ixlib=js-3.7.0) 
 
 The HP message frame combines the IPv6 address with an 8 bit header containing HP protocol settings and 128 bit signature generated using network provided public key infrastructure (PKI), and an optional 96 bit nonce. This results in a 33-45 byte overhead per message frame. 
 
