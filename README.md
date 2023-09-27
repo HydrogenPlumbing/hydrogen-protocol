@@ -18,7 +18,7 @@ The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and 
 - Providing or specifying LPWAN a complete protocol. HP is designed to work across a range of existing LPWAN PHY implementations, including open spectrum and carrier-based services. HP can augment LPWAN technologies with existing Layer 2-3 services, providing application-level interoperability on device or at a network gateway.
 - Provide a facility for paid or conditional traffic peering. Traffic peering rules and billing could be implemented on top of HP networks, however, the HP protocol recommends free/open peering where upstream network costs allow, and transparent bilateral and multilateral agreements only where required to ensure financial sustainability of peering relationships.
 - Provide an OTA provisioning method for all PHY layers. We are working with hardware vendors and network operators that are building OTA provision for IoT devices via carrier-based protocols (e.g. iSIM/SoftSIM), however, HP works alongside existing carrier provisioning requirements.  
-- Force network operators to alter existing deployments to support IPv6-based IoT. However, we hope the project will facilitate on-going transition efforts.
+- Force network operators to alter existing deployments to support IPv6-based IoT. However, we hope the project will facilitate on-going transition efforts as carriers migrate to IPv6.
 
 
 **What does it do?**
