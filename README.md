@@ -3,7 +3,7 @@
 The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and interoperability framework for IoT networks that can be used on top of existing IoT protocol physical layers (PHY). The purpose of HP is to enable development of unified IoT applications that can operate across a range of IoT technologies, network operators, and regulatory environments. HP builds on existing Internet standards including IPv6 and the Border Gateway Protocol (BGP).
 
 **HP goals include:**
-Protocol- and provider-independent deployment of a unified IPv6 IoT network with inter-network roaming, adapting existing internet standards to IoT environments.
+Protocol- and provider-independent deployment of a unified IPv6 IoT network with cross provider/network roaming, adapting existing internet standards to IoT environments.
 Provide a framework for allowing traffic peering between network operators using a common PHY layer.
 Providing IPv6 compatibility, while minimizing data overhead for power and bandwidth constrained devices (33-45 byte overhead per message frame).
 Providing device authentication and end to end encryption using best-available methods, with ability to support new encryption methods.
