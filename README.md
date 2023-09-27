@@ -36,9 +36,9 @@ Messages sent to or from devices use a HP network gateway for device authenticat
 
 HP uses 128 bit IPv6 address for device identification and network roaming (see figure 1).  The first 48 bits the routing prefix for a BGP-provisioned publicly routed IPv6 network, followed by a 16 bit application ID, and a 64 bit device identifier. The initial 48 bit network ID serves as the gateway address for all devices on this network. 
 
-![diagram-export-9_26_2023, 11 27 44 AM.png]()
+![diagram-export-9_26_2023, 11 27 44 AM.png](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/Yw00d92-Bzcxjyi4a6gXG.png?ixlib=js-3.7.0))
 
-Figure 1: HP IPv6 Addressing   [﻿View on canvas](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/Yw00d92-Bzcxjyi4a6gXG.png?ixlib=js-3.7.0) 
+Figure 1: HP IPv6 Addressing 
 
 The HP message frame combines the IPv6 address with an 8 bit header containing HP protocol settings and 128 bit signature generated using network provided public key infrastructure (PKI), and an optional 96 bit nonce. This results in a 33-45 byte overhead per message frame. 
 
