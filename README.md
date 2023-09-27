@@ -3,15 +3,6 @@
 The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and interoperability framework for IoT networks that can be used on top of existing IoT protocol physical layers (PHY). The purpose of HP is to enable development of unified IoT applications that can operate across a range of IoT technologies, network operators, and regulatory environments. HP builds on existing Internet standards including IPv6 and the Border Gateway Protocol (BGP).
 
 **HP goals include:**
-Protocol- and provider-independent deployment of a unified IPv6 IoT network with cross provider/network roaming, adapting existing internet standards to IoT environments.
-Provide a framework for allowing traffic peering between network operators using a common PHY layer.
-Providing IPv6 compatibility, while minimizing data overhead for power and bandwidth constrained devices (33-45 byte overhead per message frame).
-Providing device authentication and end to end encryption using best-available methods, with ability to support new encryption methods.
-Provide secure, lightweight over-the-air (OTA) device provisioning wherever supported by the PHY layer.
-Layered implementation allowing deployment alongside existing LPWAN protocols at the application-level, or as a replacement for Layer 2-3 data link and network implementations.
-Provide a transitional implementation for network operators and protocols that do not yet support standards-based Layer 2-3
-Allow for federated implementation via standard protocols. Anyone can deploy an HP network and devices by provisioning an IPv6 /48 address block and an ASN from their regional internet registry. By relying on existing internet routing infrastructure to identify networks there's no need for a central network registry or peering infrastructure as has been ﻿developed proposed for existing LPWAN protocols.
-
 - Protocol- and provider-independent deployment of a unified IPv6 IoT network with inter-network roaming, adapting existing internet standards to IoT environments.
 - Provide a framework for allowing traffic peering between network operators using a common PHY layer.
 - Providing IPv6 compatibility, while minimizing data overhead for power and bandwidth constrained devices (33-45 byte overhead per message frame).
