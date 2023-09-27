@@ -25,7 +25,7 @@ The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and 
 
 HP provides a lightweight IPv6 implementation geared towards power and bandwidth constrained IoT devices. HP uses the IPv6 address space to identify and authenticate devices, including on networks that don't yet support IPv6 addressing, as is the case for many mobile network operators today. 
 
-By combining  IPv6 and IPsec implementations augmented for IoT with BGP provide a standards-aligned framework for device authentication that spans network and protocol boundaries, and reduces per-message overhead freeing up network space in bandwidth constrained environments.
+By combining  IPv6 and IPsec implementations augmented for IoT with BGP, HP provides a standards-aligned framework for device authentication that spans network and protocol boundaries, and reduces per-message overhead. 
 
 HP is design to complement existing LPWAN technologies, providing a set of services that can be layered on top of existing protocols already provide device-level authentication (e.g. LTE/NB-IoT), and can be implemented on-device or at a gateway for existing networks.
 
