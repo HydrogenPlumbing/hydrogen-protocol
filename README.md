@@ -4,7 +4,7 @@ The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and 
 
 **HP goals include:**
 - Protocol- and provider-independent deployment of a unified IPv6 IoT network with cross-provider/network roaming, adapting existing internet standards to IoT environments.
-- Provide a framework for allowing traffic peering between network operators using a common PHY layer.
+- Provide a framework to support device roaming and traffic peering between network operators with parallel networks using a the same PHY layer (e.g. regional LoRaWAN providers).
 - Providing IPv6 compatibility, while minimizing data overhead for power and bandwidth constrained devices (33-45 byte overhead per message frame).
 - Providing device authentication and end to end encryption using best-available methods, with ability to support new  encryption methods.  
 - Provide secure, lightweight over-the-air (OTA) device provisioning wherever  supported by the PHY layer.
