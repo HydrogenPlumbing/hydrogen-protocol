@@ -4,7 +4,7 @@ The Hydrogen Protocol (HP) is a Low Power Wide Area Network (LPWAN) roaming and 
 
 **HP goals include:**
 - Protocol- and provider-independent deployment of a unified IPv6 IoT network with cross-provider/network roaming, adapting existing internet standards to IoT environments.
-- Provide a framework to support device roaming and traffic peering between network operators with parallel networks using a the same PHY layer (e.g. regional LoRaWAN providers).
+- Provide a framework to support device roaming and traffic peering between network operators with parallel networks using the same PHY layer (e.g. regional LoRaWAN providers).
 - Providing IPv6 compatibility, while minimizing data overhead for power and bandwidth constrained devices (33-45 byte overhead per message frame).
 - Providing device authentication and end to end encryption using best-available methods, with ability to support new  encryption methods.  
 - Provide secure, lightweight over-the-air (OTA) device provisioning wherever  supported by the PHY layer.
@@ -27,14 +27,14 @@ HP provides a lightweight IPv6 implementation geared towards power and bandwidth
 
 By combining  IPv6 and IPsec implementations augmented for IoT with BGP, HP provides a standards-aligned framework for device authentication that spans network and protocol boundaries, and reduces per-message overhead. 
 
-HP is design to complement existing LPWAN technologies, providing a set of services that can be layered on top of existing protocols that already provide device-level authentication (e.g. LTE/NB-IoT), and can be implemented on-device for end-to-end deployment, or as a proxy/gateway into existing networks.
+HP is designed to complement existing LPWAN technologies, providing a set of services that can be layered on top of existing protocols that already provide device-level authentication (e.g. LTE/NB-IoT), and can be implemented on-device for end-to-end deployment, or as a proxy/gateway into existing networks.
 
 Messages sent to or from devices use a HP network gateway for device authentication and as a data relay for subscribing applications. HP combines global, internet routable addresses, PKI-based device authentication, and message security and integrity. By using a single 128 bit IPv6 address to define the device, and a BGP hosted subnet as the gateway, HP provides a compact, self-describing IoT network that leverages existing internet address space and protocols.
 
 
  **How does it work?**
 
-HP uses 128 bit IPv6 address for device identification and network roaming (see figure 1).  The first 48 bits the routing prefix for a BGP-provisioned publicly routed IPv6 network, followed by a 16 bit application ID, and a 64 bit device identifier. The initial 48 bit network ID serves as the gateway address for all devices on this network. 
+HP uses 128 bit IPv6 addresses for device identification and network roaming (see figure 1).  The first 48 bits the routing prefix for a BGP-provisioned publicly routed IPv6 network, followed by a 16 bit application ID, and a 64 bit device identifier. The initial 48 bit network ID serves as the gateway address for all devices on this network. 
 
 ![diagram-export-9_26_2023, 11 27 44 AM.png](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/Yw00d92-Bzcxjyi4a6gXG.png?ixlib=js-3.7.0))
 
@@ -82,7 +82,7 @@ Devices and relays can be provisioned and operated using a lightweight protocol 
 - REQUEST ACCESS (optional -- keys can be predefined)
     - Allows dynamic OTA provisioning of device / network / application key pairs using ECDF key exchange.
     - Once keys are signed the device can send and receive messages until the device key is deprecated by the network.
-    - Depreciated or compromised keys can be replaced at any time via an additional REQUEST ACCESS call.
+    - Deprecated or compromised keys can be replaced at any time via an additional REQUEST ACCESS call.
 - CONFIGURE RECEIVE 
     - Configures device-specific settings for receiving messages. These settings are often defined by the PHY and can be configured at an application or network-level if desired.
         - Synchronous/Asynchronous mode
