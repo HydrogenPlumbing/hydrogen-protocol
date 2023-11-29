@@ -42,12 +42,12 @@ HP uses 128 bit IPv6 addresses for device identification and network roaming (se
 ![Figure 1: HP IPv6 Addressing](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=t5zMdtEgnCZodQQteiVgTA&type=embed)
 Figure 1: HP IPv6 Addressing 
 
-The HP message frame combines the IPv6 address with an 8 bit header containing HP protocol settings and 128 bit signature generated using network provided public key infrastructure (PKI), and an optional 96 bit nonce. This results in a 33-45 byte overhead per message frame. 
+The HP message frame combines the IPv6 address with an 8 bit header containing HP protocol settings and 128 bit signature generated using network provided public key infrastructure (PKI), and an optional 96 bit nonce. This results in a 33-45 byte overhead per message frame, combining message routing, end-to-end encryption, and device authentication.
 
 ![Figure 2: HP message frame](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=U0waJFDwEAViroloVTkH0g&type=embed)
 Figure 2: HP message frame
 
-HP uses local relays, with IoT PHY-specific radios (e.g. LoRa, MIOTY, NB-IoT) to relay messages to and from IoT devices and transfer them to the HP network gateway. 
+HP uses addapters with PHY-specific radios (e.g. LoRa, MIOTY, NB-IoT) to relay messages to and from IoT devices and transfer them to the HP network gateway over the IPv6 Internet. 
 
 The relay runs a minimal HP protocol implementation that can parse the HP message headers, and (optionally) verify the message was sent from a valid, authenticated device using PKI. If the local relay supports IPv6 then it transfers the complete HP message directly to the network gateway defined by the first 48 bits of the device's address. In the case of relays with upstream networks (either wired or wireless) that don't offer native IPv6 support, the relay can forward the message (e.g. via IPv4 tunneling) to an upstream relay that can reach the gateway via IPv6.
 
@@ -56,7 +56,7 @@ This approach allows any local relay that supports the IoT PHY layer (e.g. LoRa,
 ![Figure 3: simplified HP network architecture with direct relay-gateway connection](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=nW_saSvpS3eF8PLnOYrGJg&type=embed)
 Figure 3: simplified HP network architecture with direct relay-gateway connection
 
-HP devices are provisioned using device- and network-specific key pairs configured via Elliptic Curve Diffie Hellman (ECDH) key exchange. Once provisioned messages are signed using the device's key,  message-level encryption can be performed using device, network, or application-specific keys using best-available methods (e.g. AES-GCM or ChaCha20).
+HP devices are provisioned using device- and network-specific key pairs either configured at time of manufacture, or dynamically via Elliptic Curve Diffie Hellman (ECDH) key exchange. Once provisioned messages are signed using the device's key, message-level encryption can be performed using device, network, or application-specific keys using best-available methods (e.g. AES-GCM or ChaCha20).
 
 Messages received by the gateway are placed in queues and can be subscribed to via the corresponding gateway, application,or device ID. This pub/sub style message broker builds in existing IoT best practices (e.g. MQTT), adding a unified device/queue address space and message source authentication. The gateway message queues operate bidirectionally and can stage data for transfer to intermittently connected IoT devices.
 
