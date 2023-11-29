@@ -43,7 +43,7 @@ HP uses 128 bit IPv6 addresses for device identification and network roaming (se
 ![Figure 1: HP IPv6 Addressing](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=t5zMdtEgnCZodQQteiVgTA&type=embed)
 Figure 1: HP IPv6 Addressing 
 
-The HP message frame combines the IPv6 address with an 8 bit header containing HP protocol settings and 128 bit signature generated using network provided public key infrastructure (PKI), and an optional 96 bit nonce. This results in a 33-45 byte overhead per message frame, combining message routing, end-to-end encryption, and device authentication.
+The HP message frame combines the IPv6 address with an 8 bit header containing HP protocol settings and 128 bit signature generated using network provided public key infrastructure (PKI), and an optional 96 bit nonce. This results in a 33-45 byte overhead per message frame, combining message routing, and device authentication, and end-to-end encryption. Message signing and encryption methods build on IPSec Authentication Header ([RFC2402](https://datatracker.ietf.org/doc/html/rfc2402)) and Encapsulating Security Payload ([RFC5406](https://datatracker.ietf.org/doc/html/rfc2406)). 
 
 ![Figure 2: HP message frame](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=U0waJFDwEAViroloVTkH0g&type=embed)
 Figure 2: HP message frame
