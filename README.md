@@ -36,16 +36,12 @@ Messages sent to or from devices use a HP network gateway for device authenticat
 
 HP uses 128 bit IPv6 addresses for device identification and network roaming (see figure 1).  The first 48 bits the routing prefix for a BGP-provisioned publicly routed IPv6 network, followed by a 16 bit application ID, and a 64 bit device identifier. The initial 48 bit network ID serves as the gateway address for all devices on this network. 
 
-![diagram-export-9_26_2023, 11 27 44 AM.png](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/Yw00d92-Bzcxjyi4a6gXG.png?ixlib=js-3.7.0))
-
+![Figure 1: HP IPv6 Addressing](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=t5zMdtEgnCZodQQteiVgTA&type=embed)
 Figure 1: HP IPv6 Addressing 
 
 The HP message frame combines the IPv6 address with an 8 bit header containing HP protocol settings and 128 bit signature generated using network provided public key infrastructure (PKI), and an optional 96 bit nonce. This results in a 33-45 byte overhead per message frame. 
 
-![diagram-export-9_26_2023, 12 40 05 PM.png](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/O0OVo1uCOAts6Saj7C9ps.png?ixlib=js-3.7.0 "diagram-export-9_26_2023, 12 40 05 PM.png")
-
-
-
+![Figure 2: HP message frame](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=U0waJFDwEAViroloVTkH0g&type=embed)
 Figure 2: HP message frame
 
 HP uses local relays, with IoT PHY-specific radios (e.g. LoRa, MIOTY, NB-IoT) to relay messages to and from IoT devices and transfer them to the HP network gateway. 
@@ -54,19 +50,15 @@ The relay runs a minimal HP protocol implementation that can parse the HP messag
 
 This approach allows any local relay that supports the IoT PHY layer (e.g. LoRa, NB-IoT) to forward messages to the correct network gateway without any additional knowledge about the device or its network beyond the IPv6 address. This is different from existing IoT networks which require PHY and protocol specific look-ups to resolve devices and network gateways. A key tenet of HP is open and transparent traffic peering between networks wherever upstream bandwidth costs allow. 
 
-![diagram-export-9_26_2023, 12 04 59 PM.png](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/pV-H-heh5O4_bc61C5FfQ.png?ixlib=js-3.7.0 "diagram-export-9_26_2023, 12 04 59 PM.png")
-
+![Figure 3: simplified HP network architecture with direct relay-gateway connection](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=nW_saSvpS3eF8PLnOYrGJg&type=embed)
 Figure 3: simplified HP network architecture with direct relay-gateway connection
 
 HP devices are provisioned using device- and network-specific key pairs configured via Elliptic Curve Diffie Hellman (ECDH) key exchange. Once provisioned messages are signed using the device's key,  message-level encryption can be performed using device, network, or application-specific keys using best-available methods (e.g. AES-GCM or ChaCha20).
 
 Messages received by the gateway are placed in queues and can be subscribed to via the corresponding gateway, application,or device ID. This pub/sub style message broker builds in existing IoT best practices (e.g. MQTT), adding a unified device/queue address space and message source authentication. The gateway message queues operate bidirectionally and can stage data for transfer to intermittently connected IoT devices.
 
-![diagram-export-9_26_2023, 1 00 32 PM.png](https://eraser.imgix.net/workspaces/uv5MXZIUEEOrvsbqiRAy/MjzvnPEw6ldkEU7y9GIx1yLZSJJ3/mY3ScnOkbNlopTDbu2Tc9.png?ixlib=js-3.7.0 "diagram-export-9_26_2023, 1 00 32 PM.png")
-
-
-
-
+![Figure 4: IoT connections via IPv6 gateway](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=GFSq1jMCh4CO3fZLDYhBTQ&type=embed)
+Figure 4: IoT connections via IPv6 gateway
 
 **Hydrogen Protocol Device Provisioning  and Network Management**
 
