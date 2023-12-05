@@ -48,7 +48,7 @@ The HP message frame combines the IPv6 address with an 8 bit header containing H
 ![Figure 2: HP message frame](https://app.eraser.io/workspace/uv5MXZIUEEOrvsbqiRAy/preview?elements=U0waJFDwEAViroloVTkH0g&type=embed)
 Figure 2: HP message frame
 
-HP uses addapters with PHY-specific radios (e.g. LoRa, MIOTY, NB-IoT) to relay messages to and from IoT devices and transfer them to the HP network gateway over the IPv6 Internet. 
+HP uses adapters with PHY-specific radios (e.g. LoRa, MIOTY, NB-IoT) to relay messages to and from IoT devices and transfer them to the HP network gateway over the IPv6 Internet. 
 
 The relay runs a minimal HP protocol implementation that can parse the HP message headers, and (optionally) verify the message was sent from a valid, authenticated device using PKI. If the local relay supports IPv6 then it transfers the complete HP message directly to the network gateway defined by the first 48 bits of the device's address. In the case of relays with upstream networks (either wired or wireless) that don't offer native IPv6 support, the relay can forward the message (e.g. via IPv4 tunneling) to an upstream relay that can reach the gateway via IPv6.
 
